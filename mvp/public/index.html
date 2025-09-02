@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Agrar-Dashboard • Mockup Light</title>
+  <link rel="stylesheet" href="styles-light.css" />
+  <meta name="description" content="MVP-Mockup für ein Agrar-Dashboard (statisch, ohne Funktionalität)">
+</head>
+<body>
+  <header class="topbar" role="banner">
+    <h1>Agrar-Dashboard</h1>
+  </header>
+
+  <main class="container" role="main">
+    <!-- Wetter-Kacheln -->
+    <section class="cards-row" aria-label="Wetter Übersicht">
+      <article class="card" aria-labelledby="wetter-heute">
+        <h2 id="wetter-heute">Wetter aktuell</h2>
+        <ul class="kpis">
+          <li><span class="label">Temperatur</span><span class="value">21 °C</span></li>
+          <li><span class="label">Niederschlag</span><span class="value">0 mm</span></li>
+          <li><span class="label">Regenwahrscheinlichkeit</span><span class="value">10 %</span></li>
+          <li><span class="label">Luftfeuchtigkeit</span><span class="value">55 %</span></li>
+        </ul>
+      </article>
+
+      <article class="card" aria-labelledby="wetter-morgen">
+        <h2 id="wetter-morgen">Wetter morgen</h2>
+        <ul class="kpis">
+          <li><span class="label">Temperatur</span><span class="value">23 °C</span></li>
+          <li><span class="label">Niederschlag</span><span class="value">2 mm</span></li>
+          <li><span class="label">Regenwahrscheinlichkeit</span><span class="value">40 %</span></li>
+          <li><span class="label">Luftfeuchtigkeit</span><span class="value">60 %</span></li>
+        </ul>
+      </article>
+    </section>
+
+    <!-- 7-Tage-Vorhersage -->
+    <section class="card big" aria-label="7-Tage Wettervorhersage">
+      <h2>7-Tage-Wettervorhersage</h2>
+      <div class="forecast-grid">
+        <div class="day" aria-label="Montag"><div class="name">Mo</div><div class="icon" aria-hidden="true">🌤️</div><div class="t">22/14 °C</div></div>
+        <div class="day" aria-label="Dienstag"><div class="name">Di</div><div class="icon" aria-hidden="true">🌧️</div><div class="t">20/13 °C</div></div>
+        <div class="day" aria-label="Mittwoch"><div class="name">Mi</div><div class="icon" aria-hidden="true">☀️</div><div class="t">24/15 °C</div></div>
+        <div class="day" aria-label="Donnerstag"><div class="name">Do</div><div class="icon" aria-hidden="true">⛅</div><div class="t">21/12 °C</div></div>
+        <div class="day" aria-label="Freitag"><div class="name">Fr</div><div class="icon" aria-hidden="true">🌧️</div><div class="t">19/11 °C</div></div>
+        <div class="day" aria-label="Samstag"><div class="name">Sa</div><div class="icon" aria-hidden="true">☀️</div><div class="t">25/16 °C</div></div>
+        <div class="day" aria-label="Sonntag"><div class="name">So</div><div class="icon" aria-hidden="true">🌤️</div><div class="t">23/14 °C</div></div>
+      </div>
+    </section>
+
+    <!-- Standort- & Produktauswahl -->
+    <section class="cards-row">
+      <article class="card">
+        <h2>Standort wählen</h2>
+        <p class="placeholder">[ Eingabefeld für Standort ]</p>
+      </article>
+      <article class="card">
+        <h2>Produkte filtern</h2>
+        <p class="placeholder">[ Auswahlbox für Kulturen ]</p>
+      </article>
+    </section>
+
+    <!-- Produktkarten -->
+    <section class="cards-row" aria-label="Produktkarten">
+      <article class="card">
+        <h2>Weizen</h2>
+        <p>Status: <span class="dot dot-green" aria-hidden="true"></span> Erntebereit</p>
+        <p>Optimale Bedingungen: 22–26 °C, ≤ 60 % Luftfeuchte</p>
+        <p>Aktuelle Werte: 23 °C, 55 %</p>
+        <p>Erntehinweis: Unter 18 % Kornfeuchte ernten</p>
+      </article>
+      <article class="card">
+        <h2>Mais</h2>
+        <p>Status: <span class="dot dot-orange" aria-hidden="true"></span> Akzeptabel</p>
+        <p>Optimale Bedingungen: 15–30 °C, ≤ 20 % Luftfeuchte</p>
+        <p>Aktuelle Werte: 28 °C, 40 %</p>
+        <p>Erntehinweis: Risiko Schimmelbildung beachten</p>
+      </article>
+    </section>
+  </main>
+
+  <footer class="foot" role="contentinfo">
+    <small>Mockup-Version – keine echten Wetterdaten</small>
+  </footer>
+</body>
+</html>
