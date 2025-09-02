@@ -1,88 +1,144 @@
 <!doctype html>
 <html lang="de">
+
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Agrar-Dashboard • Mockup Light</title>
+  <title>LG Arlen 1887 • Agrar-Dashboard (MVP)</title>
+
+  <!-- Globales Light-Theme -->
   <link rel="stylesheet" href="styles-light.css" />
-  <meta name="description" content="MVP-Mockup für ein Agrar-Dashboard (statisch, ohne Funktionalität)">
 </head>
+
 <body>
-  <header class="topbar" role="banner">
-    <h1>Agrar-Dashboard</h1>
+
+  <!-- **************************************
+       HERO / BRANDING – LG Arlen 1887
+       ************************************** -->
+  <header class="hero">
+    <div class="hero-bg"></div>
+    <div class="hero-inner">
+      <div class="hero-logo" aria-hidden="true">
+        <!-- Einfaches Blatt-Logo als SVG -->
+        <svg viewBox="0 0 24 24" fill="none" width="44" height="44">
+          <path d="M12 3c4 4 6 7 6 10a6 6 0 0 1-12 0c0-3 2-6 6-10Z" fill="#2e7d32" />
+          <path d="M12 3v14" stroke="#2e7d32" stroke-width="2" stroke-linecap="round" />
+        </svg>
+      </div>
+      <h1>Landwirtschafts-Genossenschaft Arlen 1887</h1>
+      <p class="hero-sub">Agrar-Dashboard (MVP)</p>
+
+      <!-- Kleine Live-KPIs im Hero -->
+      <div class="hero-kpis">
+        <span><span class="dot" aria-hidden="true"></span><span id="kpi-location">–</span></span>
+        <span>•</span>
+        <span id="kpi-temp">– °C</span>
+      </div>
+    </div>
   </header>
 
   <main class="container" role="main">
-    <!-- Wetter-Kacheln -->
+    <!-- **************************************
+         WETTER-KACHELN – HEUTE & MORGEN
+         ************************************** -->
     <section class="cards-row" aria-label="Wetter Übersicht">
       <article class="card" aria-labelledby="wetter-heute">
         <h2 id="wetter-heute">Wetter aktuell</h2>
         <ul class="kpis">
-          <li><span class="label">Temperatur</span><span class="value">21 °C</span></li>
-          <li><span class="label">Niederschlag</span><span class="value">0 mm</span></li>
-          <li><span class="label">Regenwahrscheinlichkeit</span><span class="value">10 %</span></li>
-          <li><span class="label">Luftfeuchtigkeit</span><span class="value">55 %</span></li>
+          <li><span class="label">Zustand</span><span class="value" id="today-desc">–</span></li>
+          <li><span class="label">Temperatur</span><span class="value" id="today-temp">– °C</span></li>
+          <li><span class="label">Niederschlag</span><span class="value" id="today-precip">– mm</span></li>
+          <li><span class="label">Regenwahrscheinlichkeit</span><span class="value" id="today-pop">– %</span></li>
+          <li><span class="label">Luftfeuchtigkeit</span><span class="value" id="today-rh">– %</span></li>
         </ul>
+        <p class="placeholder" id="today-updated">Aktualisiert: –</p>
       </article>
 
       <article class="card" aria-labelledby="wetter-morgen">
         <h2 id="wetter-morgen">Wetter morgen</h2>
         <ul class="kpis">
-          <li><span class="label">Temperatur</span><span class="value">23 °C</span></li>
-          <li><span class="label">Niederschlag</span><span class="value">2 mm</span></li>
-          <li><span class="label">Regenwahrscheinlichkeit</span><span class="value">40 %</span></li>
-          <li><span class="label">Luftfeuchtigkeit</span><span class="value">60 %</span></li>
+          <li><span class="label">Zustand</span><span class="value" id="tomorrow-desc">–</span></li>
+          <li><span class="label">Temp. (min/max)</span><span class="value" id="tomorrow-temp">– / – °C</span></li>
+          <li><span class="label">Niederschlag</span><span class="value" id="tomorrow-precip">– mm</span></li>
+          <li><span class="label">Regenwahrsch. (max)</span><span class="value" id="tomorrow-pop">– %</span></li>
+          <li><span class="label">Ø Luftfeuchte</span><span class="value" id="tomorrow-rh">– %</span></li>
         </ul>
       </article>
     </section>
 
-    <!-- 7-Tage-Vorhersage -->
+    <!-- **************************************
+         7-TAGE-VORHERSAGE
+         ************************************** -->
     <section class="card big" aria-label="7-Tage Wettervorhersage">
       <h2>7-Tage-Wettervorhersage</h2>
-      <div class="forecast-grid">
-        <div class="day" aria-label="Montag"><div class="name">Mo</div><div class="icon" aria-hidden="true">🌤️</div><div class="t">22/14 °C</div></div>
-        <div class="day" aria-label="Dienstag"><div class="name">Di</div><div class="icon" aria-hidden="true">🌧️</div><div class="t">20/13 °C</div></div>
-        <div class="day" aria-label="Mittwoch"><div class="name">Mi</div><div class="icon" aria-hidden="true">☀️</div><div class="t">24/15 °C</div></div>
-        <div class="day" aria-label="Donnerstag"><div class="name">Do</div><div class="icon" aria-hidden="true">⛅</div><div class="t">21/12 °C</div></div>
-        <div class="day" aria-label="Freitag"><div class="name">Fr</div><div class="icon" aria-hidden="true">🌧️</div><div class="t">19/11 °C</div></div>
-        <div class="day" aria-label="Samstag"><div class="name">Sa</div><div class="icon" aria-hidden="true">☀️</div><div class="t">25/16 °C</div></div>
-        <div class="day" aria-label="Sonntag"><div class="name">So</div><div class="icon" aria-hidden="true">🌤️</div><div class="t">23/14 °C</div></div>
-      </div>
+      <div class="forecast-grid" id="forecast-grid"></div>
     </section>
 
-    <!-- Standort- & Produktauswahl -->
+    <!-- **************************************
+         STANDORT & PRODUKTFILTER
+         ************************************** -->
     <section class="cards-row">
+      <!-- Standortsuche -->
       <article class="card">
         <h2>Standort wählen</h2>
-        <p class="placeholder">[ Eingabefeld für Standort ]</p>
+        <form id="city-form" class="kpis" style="grid-template-columns:1fr auto;">
+          <label style="grid-column:1 / -1">
+            <span class="label">Stadt (z. B. Berlin, München)</span>
+            <input id="city-input" type="text" placeholder="Stadtname"
+              style="width:100%;padding:10px;border:1px solid #dce3ea;border-radius:10px;">
+          </label>
+          <button type="submit"
+            style="padding:10px 14px;border-radius:10px;border:1px solid #dce3ea;background:#fff;cursor:pointer">Suchen</button>
+        </form>
+        <p class="placeholder" id="city-status">Aktueller Standort: –</p>
       </article>
+
+      <!-- Dropdown: Produkte filtern -->
       <article class="card">
-        <h2>Produkte filtern</h2>
-        <p class="placeholder">[ Auswahlbox für Kulturen ]</p>
+        <details id="product-dropdown" class="dropdown">
+          <summary class="dropdown-summary">
+            <span>Produkte filtern</span>
+            <div class="right">
+              <span class="pill" id="product-count">0 ausgewählt</span>
+              <!-- Chevron-Icon (dreht bei open) -->
+              <svg class="chevron" width="16" height="16" viewBox="0 0 20 20" fill="none"
+                xmlns="http://www.w3.org/2000/svg">
+                <path d="M7 6L13 10L7 14V6Z" fill="currentColor" />
+              </svg>
+            </div>
+          </summary>
+
+          <div class="dropdown-body">
+            <div class="btn-row">
+              <button type="button" class="btn" id="btn-all">Alle auswählen</button>
+              <button type="button" class="btn" id="btn-none">Keine auswählen</button>
+            </div>
+            <div class="filter-row">
+              <input id="product-search" type="text" placeholder="Produkt suchen (z. B. Weizen, Mais)" />
+            </div>
+            <ul id="product-list" class="product-list"></ul>
+            <p class="hint">Mehrfachauswahl möglich (Checkboxen).</p>
+          </div>
+        </details>
       </article>
     </section>
 
-    <!-- Produktkarten -->
-    <section class="cards-row" aria-label="Produktkarten">
-      <article class="card">
-        <h2>Weizen</h2>
-        <p>Status: <span class="dot dot-green" aria-hidden="true"></span> Erntebereit</p>
-        <p>Optimale Bedingungen: 22–26 °C, ≤ 60 % Luftfeuchte</p>
-        <p>Aktuelle Werte: 23 °C, 55 %</p>
-        <p>Erntehinweis: Unter 18 % Kornfeuchte ernten</p>
-      </article>
-      <article class="card">
-        <h2>Mais</h2>
-        <p>Status: <span class="dot dot-orange" aria-hidden="true"></span> Akzeptabel</p>
-        <p>Optimale Bedingungen: 15–30 °C, ≤ 20 % Luftfeuchte</p>
-        <p>Aktuelle Werte: 28 °C, 40 %</p>
-        <p>Erntehinweis: Risiko Schimmelbildung beachten</p>
-      </article>
+    <!-- **************************************
+         PRODUKTKARTEN (Status + Mini-Chart)
+         ************************************** -->
+    <section class="card big" id="product-cards">
+      <h2>Produktkarten</h2>
+      <div id="cards-grid" class="cards-grid"></div>
     </section>
   </main>
 
   <footer class="foot" role="contentinfo">
-    <small>Mockup-Version – keine echten Wetterdaten</small>
+    <small>Live-Daten von Open-Meteo • Zeitzone automatisch</small>
   </footer>
+
+  <!-- Charts zuerst, dann unsere App-Logik -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.3/dist/chart.umd.min.js"></script>
+  <script src="app.js?v=9" defer></script>
 </body>
+
 </html>
